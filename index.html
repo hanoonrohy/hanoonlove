@@ -9,13 +9,12 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: white;
+  background: white; /* 👈 أبيض */
   color: black;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* تسجيل الدخول */
 #login {
   height: 100vh;
   display: flex;
@@ -56,39 +55,21 @@ section { padding: 50px 15px; }
   border-radius: 10px;
 }
 
-/* 🔥 الجاليري FULLSCREEN */
-.gallery {
-  position: relative;
-}
-
+/* الجاليري */
 .slider {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 
+/* 👇 الحل النهائي للصور */
 .slider img {
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
+  background: #f5f5f5; /* 👈 لون خفيف حوالين الصورة */
   scroll-snap-align: center;
 }
-
-/* أزرار */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: black;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.left { left: 10px; }
-.right { right: 10px; }
 
 /* الشعر */
 .poem {
@@ -100,7 +81,7 @@ section { padding: 50px 15px; }
 /* المفاجأة */
 #msg { display: none; margin-top:20px; }
 
-/* ❤️ القلوب */
+/* القلوب */
 .heart {
   position: fixed;
   color: red;
@@ -112,7 +93,7 @@ section { padding: 50px 15px; }
   100% { transform: translateY(-10vh); opacity:0; }
 }
 
-/* لعبة */
+/* اللعبة */
 .game-box {
   border: 1px solid black;
   padding: 20px;
@@ -131,7 +112,6 @@ section { padding: 50px 15px; }
   <p id="error"></p>
 </div>
 
-<!-- الأغنية -->
 <audio id="music" loop>
   <source src="maak.mp3">
 </audio>
@@ -213,18 +193,11 @@ section { padding: 50px 15px; }
 
 <!-- الصور -->
 <section>
-  <h2>❤️ صورنا</h2>
-
-  <div class="gallery">
-    <div class="slider" id="slider">
-      <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
-      <img src="5.jpg"><img src="6.jpg"><img src="7.jpg"><img src="8.jpg">
-      <img src="9.jpg"><img src="10.jpg"><img src="11.jpg"><img src="12.jpg">
-      <img src="13.jpg"><img src="14.jpg"><img src="15.jpg"><img src="16.jpg">
-    </div>
-
-    <div class="nav-btn left" onclick="scrollLeft()">‹</div>
-    <div class="nav-btn right" onclick="scrollRight()">›</div>
+  <div class="slider">
+    <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
+    <img src="5.jpg"><img src="6.jpg"><img src="7.jpg"><img src="8.jpg">
+    <img src="9.jpg"><img src="10.jpg"><img src="11.jpg"><img src="12.jpg">
+    <img src="13.jpg"><img src="14.jpg"><img src="15.jpg"><img src="16.jpg">
   </div>
 </section>
 
@@ -251,7 +224,7 @@ section { padding: 50px 15px; }
 
 <script>
 
-// تسجيل الدخول
+// دخول
 function check(){
   if(pass.value==="zatalkhodr"){
     login.style.display="none";
@@ -261,7 +234,7 @@ function check(){
   }
 }
 
-// تشغيل الأغنية
+// أغنية
 function playMusic(){ music.play(); }
 
 // كتابة
@@ -275,7 +248,7 @@ function type(){
 let typing=document.getElementById("typing");
 type();
 
-// العداد
+// عداد
 let start=new Date("2025-12-26T07:00:00");
 setInterval(()=>{
   let now=new Date(), diff=now-start;
@@ -285,7 +258,7 @@ setInterval(()=>{
   seconds.innerText=Math.floor((diff/1000)%60);
 },1000);
 
-// القلوب
+// قلوب
 setInterval(()=>{
   let h=document.createElement("div");
   h.className="heart";
@@ -295,8 +268,8 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),5000);
 },400);
 
-// اللعبة بالترتيب
-let messages = [
+// لعبة
+let messages=[
 "بحبك","وحشتيني","بعشقك يا بت","كوتي يا كوتي",
 "ابوكي بيتأخر اوي في الشغل بتوحشيني اوي والله",
 "هنروح لسيدنا الحسين امتى","هاتي بوسه","مش عايزه تديني بوسه",
@@ -307,20 +280,15 @@ let messages = [
 "بهزر بهزر","عايزك انتي بس","نلف في مصر كلها"
 ];
 
-let index = 0;
-
+let index=0;
 function loveGame(){
-  gameText.innerText = messages[index];
+  gameText.innerText=messages[index];
   index++;
-  if(index >= messages.length){ index = 0; }
+  if(index>=messages.length){index=0;}
 }
 
-// المفاجأة
+// مفاجأة
 function showMsg(){ msg.style.display="block"; }
-
-// السلايدر
-function scrollLeft(){ slider.scrollBy({left:-300,behavior:'smooth'}); }
-function scrollRight(){ slider.scrollBy({left:300,behavior:'smooth'}); }
 
 </script>
 
