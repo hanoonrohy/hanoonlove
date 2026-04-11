@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
 }
 
+/* تسجيل الدخول */
 #login {
   height: 100vh;
   display: flex;
@@ -41,6 +42,7 @@ button {
 
 section { padding: 50px 15px; }
 
+/* العداد */
 .counter-box {
   display: flex;
   justify-content: center;
@@ -54,7 +56,10 @@ section { padding: 50px 15px; }
   border-radius: 10px;
 }
 
-.gallery { position: relative; }
+/* 🔥 الجاليري FULLSCREEN */
+.gallery {
+  position: relative;
+}
 
 .slider {
   display: flex;
@@ -63,33 +68,39 @@ section { padding: 50px 15px; }
 }
 
 .slider img {
-  width: 90%;
-  margin: 0 5%;
-  border-radius: 20px;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   scroll-snap-align: center;
 }
 
+/* أزرار */
 .nav-btn {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   background: black;
   color: white;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 10;
 }
 
 .left { left: 10px; }
 .right { right: 10px; }
 
+/* الشعر */
 .poem {
   max-width: 700px;
   margin: auto;
   line-height: 2;
 }
 
+/* المفاجأة */
 #msg { display: none; margin-top:20px; }
 
+/* ❤️ القلوب */
 .heart {
   position: fixed;
   color: red;
@@ -101,6 +112,7 @@ section { padding: 50px 15px; }
   100% { transform: translateY(-10vh); opacity:0; }
 }
 
+/* لعبة */
 .game-box {
   border: 1px solid black;
   padding: 20px;
@@ -111,7 +123,7 @@ section { padding: 50px 15px; }
 
 <body>
 
-<!-- 🔐 تسجيل الدخول -->
+<!-- تسجيل الدخول -->
 <div id="login">
   <h2>ادخلي مفتاح قلب مازن ❤️</h2>
   <input type="password" id="pass">
@@ -119,14 +131,13 @@ section { padding: 50px 15px; }
   <p id="error"></p>
 </div>
 
-<!-- 🎵 الأغنية -->
+<!-- الأغنية -->
 <audio id="music" loop>
   <source src="maak.mp3">
 </audio>
 
 <div id="main">
 
-<!-- البداية -->
 <section>
   <h2>بمناسبة عيد ميلادك يا روحي 🎂❤️</h2>
   <h3>دي هدية معنوية ليكي يا نور عيوني</h3>
@@ -145,7 +156,6 @@ section { padding: 50px 15px; }
   <button onclick="playMusic()">شغلي الأغنية 🎵</button>
 </section>
 
-<!-- التواريخ -->
 <section>
   <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
   <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
@@ -154,7 +164,7 @@ section { padding: 50px 15px; }
   <p>🎉 13-6-2007 - عيد ميلادي</p>
 </section>
 
-<!-- الشعر الكامل -->
+<!-- الشعر -->
 <section class="poem">
 <p>
 جميلة الخصر وحلوة العينين<br>
@@ -204,6 +214,7 @@ section { padding: 50px 15px; }
 <!-- الصور -->
 <section>
   <h2>❤️ صورنا</h2>
+
   <div class="gallery">
     <div class="slider" id="slider">
       <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
@@ -211,12 +222,13 @@ section { padding: 50px 15px; }
       <img src="9.jpg"><img src="10.jpg"><img src="11.jpg"><img src="12.jpg">
       <img src="13.jpg"><img src="14.jpg"><img src="15.jpg"><img src="16.jpg">
     </div>
+
     <div class="nav-btn left" onclick="scrollLeft()">‹</div>
     <div class="nav-btn right" onclick="scrollRight()">›</div>
   </div>
 </section>
 
-<!-- 🎮 اللعبة -->
+<!-- اللعبة -->
 <section>
   <div class="game-box">
     <h3>يلا نلعب 😏❤️</h3>
@@ -225,19 +237,14 @@ section { padding: 50px 15px; }
   </div>
 </section>
 
-<!-- 💌 المفاجأة -->
+<!-- المفاجأة -->
 <section>
   <button onclick="showMsg()">اضغطي هنا يا حنون ❤️</button>
   <div id="msg">
     يا نور عيني انا بحبك اوي ❤️<br>
     انتي اطيب واحن حد في حياتي<br>
-    احن من امي صوتك اللي بصحى عليه بيخلي يومي يعدي<br>
     انا بحبك من اعماق قلبي ❤️
   </div>
-</section>
-
-<section>
-  <h1>بحبك يا حنون ❤️</h1>
 </section>
 
 </div>
