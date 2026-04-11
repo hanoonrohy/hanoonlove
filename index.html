@@ -3,24 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حنون ❤️</title>
+<title>Secret ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
-  background: white; /* 👈 أبيض */
+  background: white;
   color: black;
   text-align: center;
   overflow-x: hidden;
 }
 
-#login {
-  height: 100vh;
+/* 🔐 شاشة القفل */
+#lock {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 9999;
 }
 
 input { padding: 10px; border-radius: 10px; }
@@ -30,13 +36,14 @@ button {
   border-radius: 20px;
   border: none;
   margin-top: 10px;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   cursor: pointer;
 }
 
 #error { color: red; }
 
+/* الموقع */
 #main { display: none; }
 
 section { padding: 50px 15px; }
@@ -55,19 +62,18 @@ section { padding: 50px 15px; }
   border-radius: 10px;
 }
 
-/* الجاليري */
+/* الصور */
 .slider {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 
-/* 👇 الحل النهائي للصور */
 .slider img {
   width: 100vw;
   height: 100vh;
   object-fit: contain;
-  background: #f5f5f5; /* 👈 لون خفيف حوالين الصورة */
+  background: #f5f5f5;
   scroll-snap-align: center;
 }
 
@@ -79,7 +85,7 @@ section { padding: 50px 15px; }
 }
 
 /* المفاجأة */
-#msg { display: none; margin-top:20px; }
+#msg { display: none; }
 
 /* القلوب */
 .heart {
@@ -104,14 +110,15 @@ section { padding: 50px 15px; }
 
 <body>
 
-<!-- تسجيل الدخول -->
-<div id="login">
+<!-- 🔐 القفل -->
+<div id="lock">
   <h2>ادخلي مفتاح قلب مازن ❤️</h2>
   <input type="password" id="pass">
-  <button onclick="check()">دخول</button>
+  <button onclick="unlock()">دخول</button>
   <p id="error"></p>
 </div>
 
+<!-- 🎵 الأغنية -->
 <audio id="music" loop>
   <source src="maak.mp3">
 </audio>
@@ -224,10 +231,326 @@ section { padding: 50px 15px; }
 
 <script>
 
-// دخول
-function check(){
-  if(pass.value==="zatalkhodr"){
-    login.style.display="none";
+// 🔐 تشفير بسيط
+function hash(str){ return btoa(str); }
+
+// الباسورد المشفر (zatalkhodr)
+let realPass = "emF0YWxraG9kcg==";
+
+function unlock(){
+  let user = pass.value;
+
+  if(hash(user) === realPass){
+    lock.style.display="none";
+    main.style.display="block";
+  } else {
+    error.innerText="ركزي يا بت 😏❤️";
+  }
+}
+
+// أغنية
+function playMusic(){ music.play(); }
+
+// كتابة
+let t="بحبك يا حنون ❤️",i=0;
+function type(){
+  if(i<t.length){
+    typing.innerHTML+=t[i++];
+    setTimeout(type,100);
+  }
+}
+let typing=document.getElementById("typing");
+type();
+
+// عداد
+let start=new Date("2025-12-26T07:00:00");
+setInterval(()=>{
+  let now=new Date(), diff=now-start;
+  days.innerText=Math.floor(diff/(1000*60*60*24));
+  hours.innerText=Math.floor((diff/(1000*60*60))%24);
+  minutes.innerText=Math.floor((diff/(1000*60))%60);
+  seconds.innerText=Math.floor((diff/1000)%60);
+},1000);
+
+// قلوب
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},400);
+
+// لعبة
+let messages=[
+"بحبك","وحشتيني","بعشقك يا بت","كوتي يا كوتي",
+"ابوكي بيتأخر اوي في الشغل بتوحشيني اوي والله",
+"هنروح لسيدنا الحسين امتى","هاتي بوسه","مش عايزه تديني بوسه",
+"طب ماشي زعلان منك","نتجوز بس وهبوسك براحتي",
+"كل يوم احلم بيكي يا بت","بتوحشني عيونك يا حنون اوي اوي",
+"وقتيه هنخرج بقااااا","بس متجيبيش شبراوي مش عايز هبلل",
+"متجيبيش حبيبة بردو","ولا تقي","ولا تيجي انتي كمان",
+"بهزر بهزر","عايزك انتي بس","نلف في مصر كلها"
+];
+
+let index=0;
+function loveGame(){
+  gameText.innerText=messages[index];
+  index++;
+  if(index>=messages.length){index=0;}
+}
+
+// مفاجأة
+function showMsg(){ msg.style.display="block"; }
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: white;
+  color: black;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* 🔐 شاشة القفل */
+#lock {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+input { padding: 10px; border-radius: 10px; }
+
+button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+#error { color: red; }
+
+/* الموقع */
+#main { display: none; }
+
+section { padding: 50px 15px; }
+
+/* العداد */
+.counter-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.time {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* الصور */
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.slider img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #f5f5f5;
+  scroll-snap-align: center;
+}
+
+/* الشعر */
+.poem {
+  max-width: 700px;
+  margin: auto;
+  line-height: 2;
+}
+
+/* المفاجأة */
+#msg { display: none; }
+
+/* القلوب */
+.heart {
+  position: fixed;
+  color: red;
+  animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-10vh); opacity:0; }
+}
+
+/* اللعبة */
+.game-box {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 القفل -->
+<div id="lock">
+  <h2>ادخلي مفتاح قلب مازن ❤️</h2>
+  <input type="password" id="pass">
+  <button onclick="unlock()">دخول</button>
+  <p id="error"></p>
+</div>
+
+<!-- 🎵 الأغنية -->
+<audio id="music" loop>
+  <source src="maak.mp3">
+</audio>
+
+<div id="main">
+
+<section>
+  <h2>بمناسبة عيد ميلادك يا روحي 🎂❤️</h2>
+  <h3>دي هدية معنوية ليكي يا نور عيوني</h3>
+
+  <h1 id="typing"></h1>
+
+  <h3>عدد الايام الجميلة اللي قضيناها سوا يا نور عيوني ❤️</h3>
+
+  <div class="counter-box">
+    <div class="time"><span id="days"></span><div>يوم</div></div>
+    <div class="time"><span id="hours"></span><div>ساعة</div></div>
+    <div class="time"><span id="minutes"></span><div>دقيقة</div></div>
+    <div class="time"><span id="seconds"></span><div>ثانية</div></div>
+  </div>
+
+  <button onclick="playMusic()">شغلي الأغنية 🎵</button>
+</section>
+
+<section>
+  <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
+  <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
+  <p>💍 12-3-2026 - قراءة الفاتحة</p>
+  <p>🎂 5-4-2007 - عيد ميلادك</p>
+  <p>🎉 13-6-2007 - عيد ميلادي</p>
+</section>
+
+<!-- الشعر -->
+<section class="poem">
+<p>
+جميلة الخصر وحلوة العينين<br>
+رقيقة القلب وناعمة اليدين<br>
+متي يكون ذراعي لخصركِ ملجأٌ<br>
+وتذوبُ روحي فيكِ بينَ يدينِ<br><br>
+
+في الحوار قلبكِ ثائرٌ<br>
+وعيونُكِ تفضحُ ما خفي لحنينِ<br>
+وقتُ ضعفي كنتِ لي داعمٌ<br>
+ووقت فرحي كنتِ لي تاج الجبينِ<br><br>
+
+وقتُ الغرامِ قلتي لي كفى<br>
+ووقتُ الخصام قلتِ لا تؤذينِ<br>
+لو فاض دمعي لرؤياكِ قلتِ اصبر ولا<br>
+تعجل فانا لقلبك طول السنينِ<br><br>
+
+كتبت لي شعرً!!،، ويلي أنا<br>
+فقد حظيتُ بحبّ يغار منه العاشقين<br>
+لو كففتَ عن الكلامِ قلتُ: أكملْ ولا<br>
+تكففْ، فكلامُكَ سحرٌ للعاشقينِ<br><br>
+
+يا من جمالكِ جعلَني شاعرًا<br>
+أكتب ابياتي بدمع العيونِ
+</p>
+
+<br><br>
+
+<p>
+ما جئتُ أطرقُ بابَ حبٍّ عابرٍ<br>
+بل جئتُ أبني في فؤادكِ موطِنا<br><br>
+
+ما كان حبّي لحظةً من نشوةٍ<br>
+بل كان عهدًا في الضلوعِ تأصّلا<br><br>
+
+ما خنتُ عهدَكِ في الهوى أبدًا<br>
+ولا رأيتُ لغيرِ حبّكِ موطِنا<br><br>
+
+أهديكِ عمري كلّه متبسّمًا<br>
+فالحبُّ أن يُعطى نقاءً مُعلَنا<br><br>
+
+إن كان للحبِّ العظيمِ رسالةٌ<br>
+فأنتِ معناها، وقلبي أُوقِنا
+</p>
+</section>
+
+<!-- الصور -->
+<section>
+  <div class="slider">
+    <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
+    <img src="5.jpg"><img src="6.jpg"><img src="7.jpg"><img src="8.jpg">
+    <img src="9.jpg"><img src="10.jpg"><img src="11.jpg"><img src="12.jpg">
+    <img src="13.jpg"><img src="14.jpg"><img src="15.jpg"><img src="16.jpg">
+  </div>
+</section>
+
+<!-- اللعبة -->
+<section>
+  <div class="game-box">
+    <h3>يلا نلعب 😏❤️</h3>
+    <button onclick="loveGame()">اضغطي هنا</button>
+    <p id="gameText"></p>
+  </div>
+</section>
+
+<!-- المفاجأة -->
+<section>
+  <button onclick="showMsg()">اضغطي هنا يا حنون ❤️</button>
+  <div id="msg">
+    يا نور عيني انا بحبك اوي ❤️<br>
+    انتي اطيب واحن حد في حياتي<br>
+    انا بحبك من اعماق قلبي ❤️
+  </div>
+</section>
+
+</div>
+
+<script>
+
+// 🔐 تشفير بسيط
+function hash(str){ return btoa(str); }
+
+// الباسورد المشفر (zatalkhodr)
+let realPass = "emF0YWxraG9kcg==";
+
+function unlock(){
+  let user = pass.value;
+
+  if(hash(user) === realPass){
+    lock.style.display="none";
     main.style.display="block";
   } else {
     error.innerText="ركزي يا بت 😏❤️";
