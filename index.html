@@ -15,11 +15,10 @@ body {
   position: relative;
 }
 
+/* ❤️ قلوب في الخلفية */
 body::before {
   content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   font-size: 20px;
@@ -106,6 +105,7 @@ section.show {
 
 #msg { display: none; margin-top:20px; }
 
+/* القلوب الطايرة */
 .heart {
   position: fixed;
   color: #ff4d6d;
@@ -122,7 +122,10 @@ section.show {
   padding: 20px;
   border-radius: 15px;
 }
-</style></head><body>
+</style>
+</head>
+
+<body>
 
 <div id="login">
   <h2>ادخلي مفتاح قلب مازن ❤️</h2>
@@ -144,10 +147,9 @@ section.show {
 <section>
   <h2>بمناسبة عيد ميلادك يا روحي 🎂❤️</h2>
   <h3>دي هدية معنوية ليكي يا نور عيوني</h3>
-
   <h1 id="typing"></h1>
 
-  <h3>عدد الايام الجميلة اللي قضيناها سوا يا نور عيوني ❤️</h3>
+  <h3>عدد الايام الجميلة اللي قضيناها سوا ❤️</h3>
 
   <div class="counter-box">
     <div class="time"><span id="days"></span><div>يوم</div></div>
@@ -159,14 +161,6 @@ section.show {
   <button onclick="playMusic()">شغلي الأغنية 🎵</button>
   <button onclick="playVoice()">اسمعي رسالتي ❤️🎤</button>
 
-</section>
-
-<section>
-  <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
-  <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
-  <p>🤲21-3-2026 - قراءة الفاتحة</p>
-  <p>🎂 5-4-2007 - عيد ميلادك</p>
-  <p>🎉 13-6-2007 - عيد ميلادي</p>
 </section>
 
 <section class="poem">
@@ -232,41 +226,32 @@ section.show {
   </div>
 </section>
 
-<section>
-  <button onclick="showMsg()">اضغطي هنا يا حنون ❤️</button>
-  <div id="msg">
-    يا نور عيني انا بحبك اوي ❤️<br>
-    انتي اطيب واحن حد في حياتي<br>
-    انا بحبك من اعماق قلبي ❤️
-    بحبك يا اللي مش عايزه تديني بوسه
-  </div>
-</section>
-
 </div>
 
 <script>
 
+// تسجيل الدخول
 function check(){
   if(pass.value==="zatalkhodr"){
     login.style.display="none";
     main.style.display="block";
   } else {
-    error.innerText="ركزي يا بت 😏❤️";
+    error.innerText="ركزي 😏";
   }
 }
 
+// صوت + أغنية
 function playMusic(){
-  voice.pause();
-  voice.currentTime=0;
+  voice.pause(); voice.currentTime=0;
   music.play();
 }
 
 function playVoice(){
-  music.pause();
-  music.currentTime=0;
+  music.pause(); music.currentTime=0;
   voice.play();
 }
 
+// كتابة
 let t="بحبك يا حنون ❤️",i=0;
 function type(){
   if(i<t.length){
@@ -276,52 +261,54 @@ function type(){
 }
 type();
 
-let start=new Date("2025-12-26T07:00:00");
-setInterval(()=>{
-  let now=new Date(), diff=now-start;
-  days.innerText=Math.floor(diff/(1000*60*60*24));
-  hours.innerText=Math.floor((diff/(1000*60*60))%24);
-  minutes.innerText=Math.floor((diff/(1000*60))%60);
-  seconds.innerText=Math.floor((diff/1000)%60);
-},1000);
+// 💥 انفجار قلوب عند الضغط
+function heartExplosion(x,y){
+  for(let i=0;i<15;i++){
+    let h=document.createElement("div");
+    h.innerHTML="❤️";
+    h.style.position="fixed";
+    h.style.left=x+"px";
+    h.style.top=y+"px";
 
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-},400);
+    let angle=Math.random()*2*Math.PI;
+    let d=100;
 
-let messages=[
-"بحبك","وحشتيني","بعشقك يا بت","كوتي يا كوتي",
-"ابوكي بيتأخر اوي في الشغل بتوحشيني اوي والله",
-"هنروح لسيدنا الحسين امتى","هاتي بوسه","مش عايزه تديني بوسه",
-"طب ماشي زعلان منك","نتجوز بس وهبوسك براحتي",
-"كل يوم احلم بيكي يا بت","بتوحشني عيونك يا حنون اوي اوي",
-"وقتيه هنخرج بقااااا","بس متجيبيش شبراوي مش عايز هبلل",
-"متجيبيش حبيبة بردو","ولا تقي","ولا تيجي انتي كمان",
-"بهزر بهزر","عايزك انتي بس","نلف في مصر كلها"
-];
+    h.animate([
+      {transform:"translate(0,0)",opacity:1},
+      {transform:`translate(${Math.cos(angle)*d}px,${Math.sin(angle)*d}px)`,opacity:0}
+    ],{duration:800});
 
-let index=0;
-function loveGame(){
-  gameText.innerText=messages[index];
-  index++;
-  if(index>=messages.length){index=0;}
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),800);
+  }
 }
 
-function showMsg(){ msg.style.display="block"; }
-
-let sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < window.innerHeight-100){
-      sec.classList.add("show");
-    }
-  });
+document.addEventListener("click",(e)=>{
+  heartExplosion(e.clientX,e.clientY);
 });
+
+// ✨ رسائل مفاجئة
+let surpriseMessages=[
+"بحبك اوي ❤️",
+"انتي اجمل حاجة في حياتي 😍",
+"ضحكتك بتدوبني 🥹",
+"انا محظوظ بيكي ❤️",
+"وحشتيني اوي 💖"
+];
+
+setInterval(()=>{
+  let msg=document.createElement("div");
+  msg.innerText=surpriseMessages[Math.floor(Math.random()*surpriseMessages.length)];
+  msg.style.position="fixed";
+  msg.style.top=Math.random()*80+"%";
+  msg.style.left=Math.random()*80+"%";
+  msg.style.background="white";
+  msg.style.padding="10px";
+  msg.style.borderRadius="10px";
+  msg.style.boxShadow="0 0 10px rgba(0,0,0,0.2)";
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(),3000);
+},7000);
 
 </script>
 
