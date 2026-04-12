@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حنون ❤️</title>
-
-<style>
+<title>حنون ❤️</title><style>
 body {
   margin: 0;
   font-family: Arial;
@@ -62,7 +59,18 @@ button {
 
 #main { display: none; }
 
-section { padding: 50px 15px; }
+/* ✨ انيميشن ظهور */
+section {
+  padding: 50px 15px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* العداد */
 .counter-box {
@@ -121,60 +129,35 @@ section { padding: 50px 15px; }
   padding: 20px;
   border-radius: 15px;
 }
-</style>
-</head>
-
-<body>
-
-<!-- تسجيل الدخول -->
-<div id="login">
+</style></head><body><!-- تسجيل الدخول --><div id="login">
   <h2>ادخلي مفتاح قلب مازن ❤️</h2>
   <input type="password" id="pass">
   <button onclick="check()">دخول</button>
   <p id="error"></p>
-</div>
-
-<audio id="music" loop>
+</div><audio id="music" loop>
   <source src="maak.mp3">
-</audio>
-
-<div id="main">
-
-<section>
+</audio><div id="main"><section>
   <h2>بمناسبة عيد ميلادك يا روحي 🎂❤️</h2>
-  <h3>دي هدية معنوية ليكي يا نور عيوني</h3>
-
-  <h1 id="typing"></h1>
-
-  <h3>عدد الايام الجميلة اللي قضيناها سوا يا نور عيوني ❤️</h3>
-
-  <div class="counter-box">
+  <h3>دي هدية معنوية ليكي يا نور عيوني</h3>  <h1 id="typing"></h1>  <h3>عدد الايام الجميلة اللي قضيناها سوا يا نور عيوني ❤️</h3>  <div class="counter-box">
     <div class="time"><span id="days"></span><div>يوم</div></div>
     <div class="time"><span id="hours"></span><div>ساعة</div></div>
     <div class="time"><span id="minutes"></span><div>دقيقة</div></div>
     <div class="time"><span id="seconds"></span><div>ثانية</div></div>
-  </div>
+  </div><button onclick="playMusic()">شغلي الأغنية 🎵</button>
+<button onclick="bigSurprise()">مفاجأة جامدة 🎁</button>
 
-  <button onclick="playMusic()">شغلي الأغنية 🎵</button>
-</section>
-
-<section>
+</section><section>
   <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
   <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
-  <p>💍 21-3-2026 - قراءة الفاتحة</p>
+  <p>🤲21-3-2026 - قراءة الفاتحة</p>
   <p>🎂 5-4-2007 - عيد ميلادك</p>
   <p>🎉 13-6-2007 - عيد ميلادي</p>
-</section>
-
-<!-- الشعر -->
-<section class="poem">
+</section><!-- الشعر --><section class="poem">
 <p>
 جميلة الخصر وحلوة العينين<br>
 رقيقة القلب وناعمة اليدين<br>
 متي يكون ذراعي لخصركِ ملجأٌ<br>
-وتذوبُ روحي فيكِ بينَ يدينِ<br><br>
-
-في الحوار قلبكِ ثائرٌ<br>
+وتذوبُ روحي فيكِ بينَ يدينِ<br><br>في الحوار قلبكِ ثائرٌ<br>
 وعيونُكِ تفضحُ ما خفي لحنينِ<br>
 وقتُ ضعفي كنتِ لي داعمٌ<br>
 ووقت فرحي كنتِ لي تاج الجبينِ<br><br>
@@ -191,15 +174,12 @@ section { padding: 50px 15px; }
 
 يا من جمالكِ جعلَني شاعرًا<br>
 أكتب ابياتي بدمع العيونِ
-</p>
 
-<br><br>
+</p><br><br>
 
 <p>
 ما جئتُ أطرقُ بابَ حبٍّ عابرٍ<br>
-بل جئتُ أبني في فؤادكِ موطِنا<br><br>
-
-ما كان حبّي لحظةً من نشوةٍ<br>
+بل جئتُ أبني في فؤادكِ موطِنا<br><br>ما كان حبّي لحظةً من نشوةٍ<br>
 بل كان عهدًا في الضلوعِ تأصّلا<br><br>
 
 ما خنتُ عهدَكِ في الهوى أبدًا<br>
@@ -210,30 +190,22 @@ section { padding: 50px 15px; }
 
 إن كان للحبِّ العظيمِ رسالةٌ<br>
 فأنتِ معناها، وقلبي أُوقِنا
-</p>
-</section>
 
-<!-- الصور -->
-<section>
+</p>
+</section><!-- الصور --><section>
   <div class="slider">
     <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
     <img src="5.jpg"><img src="6.jpg"><img src="7.jpg"><img src="8.jpg">
     <img src="9.jpg"><img src="10.jpg"><img src="11.jpg"><img src="12.jpg">
     <img src="13.jpg"><img src="14.jpg"><img src="15.jpg"><img src="16.jpg">
   </div>
-</section>
-
-<!-- اللعبة -->
-<section>
+</section><!-- اللعبة --><section>
   <div class="game-box">
     <h3>يلا نلعب 😏❤️</h3>
-    <button onclick="loveGame()">اضغطي كتير  هنا</button>
+    <button onclick="loveGame()">اضغطي كتير هنا</button>
     <p id="gameText"></p>
   </div>
-</section>
-
-<!-- المفاجأة -->
-<section>
+</section><!-- المفاجأة --><section>
   <button onclick="showMsg()">اضغطي هنا يا حنون ❤️</button>
   <div id="msg">
     يا نور عيني انا بحبك اوي ❤️<br>
@@ -241,21 +213,16 @@ section { padding: 50px 15px; }
     انا بحبك من اعماق قلبي ❤️
     بحبك يا اللي مش عايزه تديني بوسه
   </div>
-</section>
+</section></div><script>
 
-</div>
-
-<script>
-
-// تسجيل الدخول (مصلح)
+// تسجيل الدخول
 function check(){
   let password = document.getElementById("pass").value;
-
   if(password === "zatalkhodr"){
-    document.getElementById("login").style.display="none";
-    document.getElementById("main").style.display="block";
+    login.style.display="none";
+    main.style.display="block";
   } else {
-    document.getElementById("error").innerText="ركزي يا بت 😏❤️";
+    error.innerText="ركزي يا بت 😏❤️";
   }
 }
 
@@ -294,7 +261,80 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),5000);
 },400);
 
-// لعبة
+// 💥 انفجار قلوب
+function heartExplosion(x,y){
+  for(let i=0;i<15;i++){
+    let h=document.createElement("div");
+    h.innerHTML="❤️";
+    h.style.position="fixed";
+    h.style.left=x+"px";
+    h.style.top=y+"px";
+
+    let angle=Math.random()*2*Math.PI;
+    let d=100;
+
+    h.animate([
+      {transform:"translate(0,0)",opacity:1},
+      {transform:`translate(${Math.cos(angle)*d}px,${Math.sin(angle)*d}px)`,opacity:0}
+    ],{duration:800});
+
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),800);
+  }
+}
+
+document.addEventListener("click",(e)=>{
+  heartExplosion(e.clientX,e.clientY);
+});
+
+// ✨ رسائل مفاجئة
+let surpriseMessages=[
+"بحبك اوي ❤️",
+"انتي اجمل حاجة في حياتي 😍",
+"ضحكتك بتدوبني 🥹",
+"انا محظوظ بيكي ❤️",
+"وحشتيني اوي 💖"
+];
+
+setInterval(()=>{
+  let msg=document.createElement("div");
+  msg.innerText=surpriseMessages[Math.floor(Math.random()*surpriseMessages.length)];
+  msg.style.position="fixed";
+  msg.style.top=Math.random()*80+"%";
+  msg.style.left=Math.random()*80+"%";
+  msg.style.background="white";
+  msg.style.padding="10px";
+  msg.style.borderRadius="10px";
+  msg.style.boxShadow="0 0 10px rgba(0,0,0,0.2)";
+  msg.style.zIndex="999";
+
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(),3000);
+},7000);
+
+// 🎁 مفاجأة
+function bigSurprise(){
+  for(let i=0;i<50;i++){
+    setTimeout(()=>{
+      let h=document.createElement("div");
+      h.innerHTML="❤️";
+      h.style.position="fixed";
+      h.style.left=Math.random()*100+"vw";
+      h.style.top="100vh";
+
+      h.animate([
+        {transform:"translateY(0)"},
+        {transform:"translateY(-120vh)",opacity:0}
+      ],{duration:3000});
+
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),3000);
+    },i*50);
+  }
+  alert("بحبك يا اجمل حاجة في حياتي ❤️");
+}
+
+// اللعبة
 let messages=[
 "بحبك","وحشتيني","بعشقك يا بت","كوتي يا كوتي",
 "ابوكي بيتأخر اوي في الشغل بتوحشيني اوي والله",
@@ -316,7 +356,15 @@ function loveGame(){
 // مفاجأة
 function showMsg(){ msg.style.display="block"; }
 
-</script>
+// ✨ ظهور السكاشن
+let sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight-100){
+      sec.classList.add("show");
+    }
+  });
+});
 
-</body>
+</script></body>
 </html>
