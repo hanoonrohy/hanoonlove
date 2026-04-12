@@ -9,12 +9,35 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: linear-gradient(to bottom, #ffe4ec, #ffffff); /* 💖 بينك شيك */
+  background: linear-gradient(to bottom, #ffe4ec, #ffffff);
   color: black;
   text-align: center;
   overflow-x: hidden;
+  position: relative;
 }
 
+/* ❤️ قلوب في الخلفية */
+body::before {
+  content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  opacity: 0.08;
+  line-height: 50px;
+  word-spacing: 25px;
+  pointer-events: none;
+  animation: bgMove 12s linear infinite;
+}
+
+@keyframes bgMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+/* تسجيل الدخول */
 #login {
   height: 100vh;
   display: flex;
@@ -55,7 +78,7 @@ section { padding: 50px 15px; }
   border-radius: 10px;
 }
 
-/* الجاليري */
+/* الصور */
 .slider {
   display: flex;
   overflow-x: auto;
@@ -80,10 +103,10 @@ section { padding: 50px 15px; }
 /* المفاجأة */
 #msg { display: none; margin-top:20px; }
 
-/* القلوب */
+/* القلوب الطايرة */
 .heart {
   position: fixed;
-  color: #ff4d6d; /* 💖 بينك */
+  color: #ff4d6d;
   animation: floatUp 5s linear forwards;
 }
 
@@ -105,7 +128,7 @@ section { padding: 50px 15px; }
 
 <!-- تسجيل الدخول -->
 <div id="login">
-  <h2> يا كوتي ادخلي مفتاح قلب مازن ❤️</h2>
+  <h2>ادخلي مفتاح قلب مازن ❤️</h2>
   <input type="password" id="pass">
   <button onclick="check()">دخول</button>
   <p id="error"></p>
@@ -138,7 +161,7 @@ section { padding: 50px 15px; }
 <section>
   <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
   <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
-  <p>🤲 21-3-2026 - قراءة الفاتحة</p>
+  <p>💍 21-3-2026 - قراءة الفاتحة</p>
   <p>🎂 5-4-2007 - عيد ميلادك</p>
   <p>🎉 13-6-2007 - عيد ميلادي</p>
 </section>
@@ -204,7 +227,7 @@ section { padding: 50px 15px; }
 <section>
   <div class="game-box">
     <h3>يلا نلعب 😏❤️</h3>
-    <button onclick="loveGame()">اضغطي هنا يا كوتي ❤️</button>
+    <button onclick="loveGame()">اضغطي كتير  هنا</button>
     <p id="gameText"></p>
   </div>
 </section>
@@ -215,8 +238,8 @@ section { padding: 50px 15px; }
   <div id="msg">
     يا نور عيني انا بحبك اوي ❤️<br>
     انتي اطيب واحن حد في حياتي<br>
-    انا بحبك من اعماق قلبي ❤️<br>
-    بحبك يا اللي مش راضية تديني بوسه ❤️💔🥀
+    انا بحبك من اعماق قلبي ❤️
+    بحبك يا اللي مش عايزه تديني بوسه
   </div>
 </section>
 
@@ -224,13 +247,15 @@ section { padding: 50px 15px; }
 
 <script>
 
-// دخول
+// تسجيل الدخول (مصلح)
 function check(){
-  if(pass.value==="zatalkhodr"){
-    login.style.display="none";
-    main.style.display="block";
+  let password = document.getElementById("pass").value;
+
+  if(password === "zatalkhodr"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("main").style.display="block";
   } else {
-    error.innerText="ركزي يا بت 😏❤️";
+    document.getElementById("error").innerText="ركزي يا بت 😏❤️";
   }
 }
 
@@ -259,7 +284,7 @@ setInterval(()=>{
   seconds.innerText=Math.floor((diff/1000)%60);
 },1000);
 
-// قلوب
+// قلوب طايرة
 setInterval(()=>{
   let h=document.createElement("div");
   h.className="heart";
@@ -294,4 +319,4 @@ function showMsg(){ msg.style.display="block"; }
 </script>
 
 </body>
-  </html>
+</html>
