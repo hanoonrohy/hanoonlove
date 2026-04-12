@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,6 @@ body {
   position: relative;
 }
 
-/* ❤️ قلوب في الخلفية */
 body::before {
   content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
   position: fixed;
@@ -105,7 +105,6 @@ section.show {
 
 #msg { display: none; margin-top:20px; }
 
-/* القلوب الطايرة */
 .heart {
   position: fixed;
   color: #ff4d6d;
@@ -160,7 +159,14 @@ section.show {
 
   <button onclick="playMusic()">شغلي الأغنية 🎵</button>
   <button onclick="playVoice()">اسمعي رسالتي ❤️🎤</button>
+</section>
 
+<section>
+  <p>💬 26-12-2025 - اخبارك اي يا ذات الخضر ❤️</p>
+  <p>💖 19-1-2026 - أول مرة أقولك بحبك</p>
+  <p>🤲21-3-2026 - قراءة الفاتحة</p>
+  <p>🎂 5-4-2007 - عيد ميلادك</p>
+  <p>🎉 13-6-2007 - عيد ميلادي</p>
 </section>
 
 <section class="poem">
@@ -230,29 +236,36 @@ section.show {
 
 <script>
 
-// تسجيل الدخول
 function check(){
-  if(pass.value==="zatalkhodr"){
-    login.style.display="none";
-    main.style.display="block";
+  let password = document.getElementById("pass").value;
+  let loginDiv = document.getElementById("login");
+  let mainDiv = document.getElementById("main");
+  let errorText = document.getElementById("error");
+
+  if(password === "zatalkhodr"){
+    loginDiv.style.display = "none";
+    mainDiv.style.display = "block";
   } else {
-    error.innerText="ركزي 😏";
+    errorText.innerText = "ركزي 😏";
   }
 }
 
-// صوت + أغنية
 function playMusic(){
-  voice.pause(); voice.currentTime=0;
+  voice.pause();
+  voice.currentTime=0;
   music.play();
 }
 
 function playVoice(){
-  music.pause(); music.currentTime=0;
+  music.pause();
+  music.currentTime=0;
   voice.play();
 }
 
 // كتابة
 let t="بحبك يا حنون ❤️",i=0;
+let typing=document.getElementById("typing");
+
 function type(){
   if(i<t.length){
     typing.innerHTML+=t[i++];
@@ -261,7 +274,17 @@ function type(){
 }
 type();
 
-// 💥 انفجار قلوب عند الضغط
+// عداد
+let start=new Date("2025-12-26T07:00:00");
+setInterval(()=>{
+  let now=new Date(), diff=now-start;
+  document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
+  document.getElementById("hours").innerText=Math.floor((diff/(1000*60*60))%24);
+  document.getElementById("minutes").innerText=Math.floor((diff/(1000*60))%60);
+  document.getElementById("seconds").innerText=Math.floor((diff/1000)%60);
+},1000);
+
+// انفجار قلوب
 function heartExplosion(x,y){
   for(let i=0;i<15;i++){
     let h=document.createElement("div");
@@ -287,7 +310,7 @@ document.addEventListener("click",(e)=>{
   heartExplosion(e.clientX,e.clientY);
 });
 
-// ✨ رسائل مفاجئة
+// رسائل مفاجئة
 let surpriseMessages=[
 "بحبك اوي ❤️",
 "انتي اجمل حاجة في حياتي 😍",
@@ -310,7 +333,36 @@ setInterval(()=>{
   setTimeout(()=>msg.remove(),3000);
 },7000);
 
+// اللعبة
+let messages=[
+"بحبك","وحشتيني","بعشقك يا بت","كوتي يا كوتي",
+"ابوكي بيتأخر اوي في الشغل بتوحشيني اوي والله",
+"هنروح لسيدنا الحسين امتى","هاتي بوسه","مش عايزه تديني بوسه",
+"طب ماشي زعلان منك","نتجوز بس وهبوسك براحتي",
+"كل يوم احلم بيكي يا بت","بتوحشني عيونك يا حنون اوي اوي",
+"وقتيه هنخرج بقااااا","بس متجيبيش شبراوي مش عايز هبلل",
+"متجيبيش حبيبة بردو","ولا تقي","ولا تيجي انتي كمان",
+"بهزر بهزر","عايزك انتي بس","نلف في مصر كلها"
+];
+
+let index=0;
+function loveGame(){
+  document.getElementById("gameText").innerText=messages[index];
+  index++;
+  if(index>=messages.length){index=0;}
+}
+
+// ظهور السكاشن
+let sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight-100){
+      sec.classList.add("show");
+    }
+  });
+});
+
 </script>
 
 </body>
-</html>
+  </html>
